@@ -1,3 +1,39 @@
-<p>
-  authors works!
-</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 l6">
+      <div class="card">
+        
+        <h2 class="indigo-text text-darken-4">Authors List</h2>
+         <mat-table class="authors-table mat-elevation-z8" [dataSource]="dataSource">
+
+         <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+              <mat-cell *matCellDef="let author">{{name}}</mat-cell>
+          </ng-container>
+      
+          
+          <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef>Country</mat-header-cell>
+            <mat-cell class="country-cell"
+            *matCellDef="let author">{{country}}</mat-cell>
+          </ng-container>
+          
+          <ng-container matColumnDef="description">
+              <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+              <mat-cell class="description-cell"
+                        *matCellDef="let author">{{description}}</mat-cell>
+      
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+          <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+      
+      </mat-table> 
+
+
+
+      </div>
+    </div>
+  </div>
+</div>

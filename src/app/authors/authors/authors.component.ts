@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { AuthorService } from 'src/media-common/services/api/author.service';
 import { Author } from 'src/media-common/models/author';
+import { MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-authors',
@@ -9,7 +10,14 @@ import { Author } from 'src/media-common/models/author';
 })
 export class AuthorsComponent implements OnInit {
 
-  authors: Author[];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  authors: Author[] | null;
+
+  displayedColumns = ["name", "description", "country"];
+
   constructor(
     private authorService: AuthorService,
   ) { }
@@ -18,8 +26,15 @@ export class AuthorsComponent implements OnInit {
     this.authorService.getAuthors().subscribe(
       data => {
         console.log("data", data);
-        this.authors = this.authors
       }
     )
+  }
+
+  ngAfterViewInit(): void {
+    // throw new Error("Method not implemented.");
+  }
+  
+  onRowClicked(row) {
+    console.log('Row clicked: ', row);
   }
 }
