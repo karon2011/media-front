@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { Author } from 'src/media-common/models/author';
-import { catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -16,9 +16,18 @@ export class AuthorService {
     private http: HttpClient
   ) { }
 
-  getAuthors(): Observable<Author> {
-    return this.http.get<Author>(this.REST_API_SERVER)
+  getAuthors(filter = '', sortOrder = 'asc', pageNumber = 0, pageSize = 3): Observable<Author[]> {
+    return this.http.get<Author[]>(this.REST_API_SERVER,
+      {
+        params: new HttpParams()
+          .set('filter', filter)
+          .set('sortOrder', sortOrder)
+          .set('pageNumber', pageNumber.toString())
+          .set('pageSize', pageSize.toString())
+      }
+    )
       .pipe(
+        // map(res => res["payload"]),
         catchError(this.handleError<any>('Get Authors', []))
       )
   }
