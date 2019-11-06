@@ -14,12 +14,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AuthorsComponent } from './author/authors/authors.component';
 import { UsersComponent } from './user/users/users.component';
+import { RecordsComponent } from './record/records/records.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthorsComponent,
-    UsersComponent
+    UsersComponent,
+    RecordsComponent
   ],
   imports: [
     BrowserModule,

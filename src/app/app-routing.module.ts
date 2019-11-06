@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthorsComponent } from './author/authors/authors.component';
 import { UsersComponent } from './user/users/users.component';
+import { RecordsComponent } from './record/records/records.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,9 @@ const routes: Routes = [
   },
   {
     path: 'users', component: UsersComponent
+  },
+  {
+    path: 'records', component: RecordsComponent
   }
 ]
 
