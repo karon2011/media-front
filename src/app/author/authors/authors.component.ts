@@ -36,10 +36,9 @@ export class AuthorsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.dataSource = new AuthorsDataSource(this.authorService);
     console.log("this.dataSource", this.dataSource);
     // server-side search
-    fromEvent(this.input.nativeElement, 'keyup')
+    fromEvent(this.input.nativeElement,'keyup')
       .pipe(
         debounceTime(150),
         distinctUntilChanged(),
@@ -60,8 +59,8 @@ export class AuthorsComponent implements OnInit, AfterViewInit {
     // on sort or paginate events, load a new page
     merge(this.sort.sortChange, this.paginator.page)
       .pipe(
-        startWith({}),
-        tap(() => this.loadAuthorsPage())
+        // startWith({}),
+        tap(() => this.loadAuthorsPage()),
         // switchMap(() => {
         //   return this.loadAuthorsPage()
         // }),
