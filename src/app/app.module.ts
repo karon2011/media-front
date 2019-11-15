@@ -1,20 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  MatInputModule, MatPaginatorModule, MatProgressSpinnerModule,
+  MatSortModule, MatTableModule
+} from "@angular/material";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthorsComponent } from './authors/authors/authors.component';
+
+import { AuthorsComponent } from './author/authors/authors.component';
+import { UsersComponent } from './user/users/users.component';
+import { RecordsComponent } from './record/records/records.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    UsersComponent,
+    RecordsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    FormsModule,
+    // ReactiveFormsModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

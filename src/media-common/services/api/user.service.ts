@@ -1,34 +1,26 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Author } from 'src/media-common/models/author';
+import { User } from 'src/media-common/models/user';
 import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
-export class AuthorService {
+export class UserService {
 
   // todo
   // url behind an api ?
-  private REST_API_SERVER = "http://localhost:3000/authors";
+  private REST_API_SERVER = "http://localhost:3000/users";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getAuthors(filter = '', sortOrder = 'asc', pageNumber = 0, pageSize = 3): Observable<Author[]> {
-    return this.http.get<Author[]>(this.REST_API_SERVER,
-      {
-        params: new HttpParams()
-          .set('filter', filter)
-          .set('sortOrder', sortOrder)
-          .set('pageNumber', pageNumber.toString())
-          .set('pageSize', pageSize.toString())
-      }
-    )
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.REST_API_SERVER)
       .pipe(
-        // map(res => res["payload"]),
-        catchError(this.handleError<any>('Get Authors', []))
+        catchError(this.handleError<any>('Get Users', []))
       )
   }
 
