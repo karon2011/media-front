@@ -22,7 +22,7 @@ export class AuthorsComponent implements OnInit, AfterViewInit {
   author: Author;
   dataSource: AuthorsDataSource;
   displayedColumns = ["numero", "name", "country"];
-  data: unknown;
+  data: any;
 
   constructor(
     private authorService: AuthorService,
